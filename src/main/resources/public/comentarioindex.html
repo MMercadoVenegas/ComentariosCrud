@@ -2,12 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../../../style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>Comentario CRUD</title>
 </head>
+
 <body>
+
+  <div class="logo">
+    <a href="#">YOURPHONEWEB</a>
+  </div>
+
 <h1>Dejanos tu comentario en esta sección</h1>
-<a href="/new-comentario.html">Nuevo Comentario</a>
-<a href="/Pagina_web/Login.html">pagina principal</a>
+<a href="new-comentario.html">Nuevo Comentario</a>
+<a href="update-comentario.html">Modificar Comentario</a>
+<a href="../../../../../indeex.html">pagina principal</a>
+
+
+
 <table id="comentarios">
   <tr>
     <th>ID</th>
@@ -26,7 +38,7 @@
 <script>
   $(document).ready(function (){
 
-    let url = "/comentarios"
+    let url = "../sql_imports/comentarios.sql"
     $.get(url, function(json){
       $.each(json.cars, function (index, element){
         let idBtnDel = "btnDel_" + element.id
