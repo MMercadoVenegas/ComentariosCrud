@@ -1,0 +1,2 @@
+INSERT INTO comentarios (nickName, device, model, year, ram, mpx, storage, comments)
+VALUES ('Guayabas', 'Xiaomi', 'Mi 11 Lite 5G', '2019','8+4','40','128','El telefono es de muy buena calidad y ademas muy economico');

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuevo Comentario</title>
+</head>
+<body>
+<h1>Nuevo Comentario</h1>
+<form>
+  <label for="nickName">Nickname</label>
+  <input id="nickName" type="text"><br>
+
+  <label for="device">Marca</label>
+  <input id="device" type="text"><br>
+
+  <label for="model">Modelo</label>
+  <input id="model" type="text"><br>
+
+  <label for="year">Año</label>
+  <input id="year" type="text"><br>
+
+  <label for="ram">Memoria RAM</label>
+  <input id="ram" type="text"><br>
+
+  <label for="mpx">Camara Principal</label>
+  <input id="mpx" type="text"><br>
+
+  <label for="storage">Almacenamiento</label>
+  <input id="storage" type="text"><br>
+
+  <label for="comments">Comentarios</label>
+  <input id="comments" type="text"><br>
+
+  <br>
+  <a id="save" href="/">Guardar</a>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function (){
+    let settings = {}
+    settings.headers = {
+      "Accept":"application/json",
+      "Content-Type": "application/json"
+    }
+    $.ajaxSetup(settings)
+
+    $("#save").click(function (){
+      let formData = {}
+      formData.nickName = $("#nickName").val()
+
+      if(!validarFrase(formData.nickName)){
+        return;
+      }
+      formData.device = $("#device").val()
+      formData.model = $("#model").val()
+      formData.year =$("#year").val()
+      formData.ram = $("#ram").val()
+      formData.mpx =$("#mpx").val()
+      formData.storage = $("#storage").val()
+      formData.comments =$("#comments").val()
+
+      let data = JSON.stringify(formData)
+
+      $.post("/comentarios", data, function (json, status, response){
+        alert("Estado respuesta: " + status)
+      }, "json")
+    })
+  })
+</script>
+
+</body>
+</html>
